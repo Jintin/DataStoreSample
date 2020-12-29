@@ -17,9 +17,13 @@ class MainActivity : AppCompatActivity() {
 
         binding.button.setOnClickListener {
             viewModel.increaseCounter()
+            viewModel.updateCounter()
         }
-        viewModel.getCounter.asLiveData().observe(this) {
+        viewModel.counter.asLiveData().observe(this) {
             binding.result.text = "Click count: $it"
+        }
+        viewModel.counterProto.asLiveData().observe(this) {
+            println(it)
         }
 
     }
